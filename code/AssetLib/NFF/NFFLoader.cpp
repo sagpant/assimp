@@ -158,7 +158,7 @@ void NFFImporter::LoadNFF2MaterialTable(std::vector<ShadingInfo> &output,
 
     // No read the file line per line
     char line[4096];
-    const char *sz;
+    const char *sz = nullptr;
     while (GetNextLine(buffer, line)) {
         SkipSpaces(line, &sz);
 
@@ -229,7 +229,7 @@ void NFFImporter::InternReadFile(const std::string &pFile,
     std::vector<MeshInfo> meshesLocked;
 
     char line[4096];
-    const char *sz;
+    const char *sz = nullptr;
 
     // camera parameters
     aiVector3D camPos, camUp(0.f, 1.f, 0.f), camLookAt(0.f, 0.f, 1.f);
@@ -937,7 +937,7 @@ void NFFImporter::InternReadFile(const std::string &pFile,
             }
             // '' - comment
             else if ('#' == line[0]) {
-                const char *space;
+                const char *space = nullptr;
                 SkipSpaces(&line[1], &space);
                 if (!IsLineEnd(*space)) {
                     ASSIMP_LOG_INFO(space);
