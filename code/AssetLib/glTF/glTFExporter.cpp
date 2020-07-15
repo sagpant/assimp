@@ -281,7 +281,7 @@ void glTFExporter::GetTexSampler(const aiMaterial* mat, glTF::TexProperty& prop)
     std::string samplerId = mAsset->FindUniqueID("", "sampler");
     prop.texture->sampler = mAsset->samplers.Create(samplerId);
 
-    aiTextureMapMode mapU, mapV;
+    aiTextureMapMode mapU = 0, mapV = 0;
     aiGetMaterialInteger(mat,AI_MATKEY_MAPPINGMODE_U_DIFFUSE(0),(int*)&mapU);
     aiGetMaterialInteger(mat,AI_MATKEY_MAPPINGMODE_V_DIFFUSE(0),(int*)&mapV);
 
